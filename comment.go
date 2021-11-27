@@ -50,6 +50,7 @@ func (client *Client) GetComments(bandKey, postKey string, nextParams *NextParam
 	return resp.Items, resp.Paging.NextParams, nil
 }
 
+// CreateComment 댓글 생성
 func (client *Client) CreateComment(bandKey, postKey, body string) error {
 	_, err := client.CallAPI("POST", "/v2/band/post/comment/create", map[string]interface{}{
 		"band_key": bandKey,
@@ -59,6 +60,7 @@ func (client *Client) CreateComment(bandKey, postKey, body string) error {
 	return err
 }
 
+// RemoveComment 댓글 삭제
 func (client *Client) RemoveComment(bandKey, postKey, commentKey string) error {
 	_, err := client.CallAPI("POST", "/v2/band/post/comment/remove", map[string]interface{}{
 		"band_key": bandKey,
